@@ -1,0 +1,1589 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  font-weight: normal;
+  font-size: 100%;
+}
+
+.header {
+  height: 5%;
+}
+
+h1 {
+  padding-top: 45px;
+  padding-bottom: 45px;
+  font-family: William, serif;
+  font-size: 32px;
+  font-style: bold;
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #fafafa;
+}
+
+/* Определение предпочтения пользователя по цветовой схеме (светлая/темная) на основе системных настроек: */
+
+:root {
+  --bg-color: white;
+  --text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: black;
+    --text-color: white;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Стили для меню */
+.menu-icon {
+  position: absolute; /* Позиционируем меню относительно родителя */
+  right: 5%; /* Выравнивание по правому краю */
+  top: 5%; /* Отступ сверху */
+  background-color: transparent; /* Прозрачный фон */
+  border: none; /* Убираем рамку */
+  cursor: pointer; /* Указатель при наведении */
+  z-index: 1; /* Устанавливаем кнопку над слайдами */
+}
+
+.menu-icon:active {
+  transform: translateY(1.5px); /* Опускаем кнопку вниз при нажатии */
+}
+
+.hidden {
+  display: none;
+}
+
+.divider {
+  width: 80%; /* Полоска на всю ширину */
+  height: 1px; /* Высота полоски */
+  background-color: #ccc; /* Цвет полоски */
+}
+
+nav {
+  position: absolute;
+  right: 20px;
+  width: 260px; /* Сохраняем прежнюю ширину */
+  height: 230px;
+  top: 20px;
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  display: flex; /* Используем Flexbox */
+  flex-direction: column; /* Вертикальное расположение */
+  align-items: center; /* Центрируем по горизонтали */
+  overflow: hidden;
+  z-index: 1;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+  display: grid; /* Используем CSS Grid */
+  grid-template-columns: repeat(3, 1fr); /* Три колонки */
+  gap: 10px; /* Промежуток между элементами */
+}
+
+nav ul li {
+  flex: 1;
+  text-align: center; /* Центрируем текст под иконками */
+}
+
+nav ul li a {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение иконки и текста */
+  align-items: center; /* Выравнивание по центру */
+  color: #2d3047;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 0; /* Убираем рамку */
+  padding: 10px; /* Отступы для улучшения кликабельности */
+  box-sizing: border-box;
+  justify-content: center; /* Центрируем содержимое по вертикали */
+  border-radius: 10px; /* Скругление углов */
+}
+
+nav ul li a span {
+  font-size: 14px; /* Размер шрифта */
+  text-align: center; /* Центрируем текст */
+}
+
+nav ul li a img {
+  width: 25px; /* Ширина иконки */
+  height: 25px; /* Высота иконки */
+  margin-bottom: 5px; /* Отступ снизу от иконки к тексту */
+}
+
+nav ul li a:hover {
+  background-color: #f7a8fb; /* Цвет фона при наведении */
+  color: #2d3047; /* Цвет текста при наведении */
+  border-radius: 10px; /* Скругление углов */
+  transform: scale(1.05);
+}
+
+.nav-button {
+  background-color: #f7a8fb;
+  border: none;
+  color: #fafafa;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.nav-button:hover {
+  background-color: #d68fd4;
+}
+
+/* Стили для области трека скроллбара */
+body::-webkit-scrollbar-track {
+  background-color: #fff5ff; /* Цвет фона трека */
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset; /* Тень для трека */
+}
+
+/* Стили для бегунка скроллбара */
+body::-webkit-scrollbar-thumb {
+  background-color: #f7a8fb;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.25) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.25) 75%,
+    transparent 75%,
+    transparent
+  );
+}
+
+/* Стили для самого скроллбара */
+body::-webkit-scrollbar {
+  width: 12px; /* Ширина вертикального скроллбара */
+  height: 12px; /* Высота горизонтального скроллбара */
+}
+
+/* Стили для панели */
+.notification_photo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fefa55;
+  display: none; /* Скрыто по умолчанию */
+  z-index: 1000; /* Чтобы панель была поверх других элементов */
+  display: flex; /* Используем flexbox для центрирования содержимого */
+  justify-content: center; /* Центрирование содержимого по горизонтали */
+  align-items: center; /* Центрирование содержимого по вертикали */
+}
+
+/* Стили для языка */
+#language-switcher {
+  appearance: none; /* Убираем стандартный стиль селектора */
+  -webkit-appearance: none; /* Для Safari */
+  -moz-appearance: none; /* Для Firefox */
+  background-color: #fefa55; /* Цвет фона */
+  border: transparent;
+  border-radius: 20px; /* Скругление углов */
+  font-size: 16px; /* Размер шрифта */
+  color: transparent; /* Скрываем текст */
+  cursor: pointer; /* Курсор при наведении */
+  width: 80px; /* Ширина селектора */
+  height: 25px; /* Высота селектора */
+}
+
+.switch-container::after {
+  content: ''; /* Псевдоэлемент для стрелки */
+  position: absolute; /* Позволяет позиционировать стрелку */
+  right: 140px;
+  transform: translateY(-50%); /* Центрируем по вертикали */
+  border: solid #2d3047; /* Цвет стрелки */
+  border-width: 2px 2px 0 0; /* Размер стрелки */
+  display: inline-block; /* Отображение как блочный элемент */
+  width: 5px; /* Ширина стрелки */
+  height: 5px; /* Высота стрелки */
+  transform: rotate(45deg); /* Поворот для создания стрелки */
+  pointer-events: none; /* Игнорируем события мыши на стрелке */
+}
+
+.switch-container {
+  display: flex; /* Используем Flexbox для выстраивания элементов в ряд */
+  align-items: center; /* Центрируем элементы по вертикали */
+  gap: 30px; /* Устанавливаем промежуток между кнопками */
+  margin: 10px;
+}
+
+/* Стили для переключения темы */
+.highlight {
+  transition: background-color 0.15s, color 0.3s; /* Плавный переход */
+}
+
+.highlight:hover {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+.night {
+  background-color: #2d3047; /* Цвет фона для ночи */
+  color: #fafafa; /* Цвет текста для ночи */
+}
+
+.switch {
+  background-color: #fefa55; /* Цвет фона для кнопки переключения стиля */
+  border-radius: 20px; /* Скругление углов */
+  width: 60px; /* Ширина кнопки */
+  height: 25px; /* Высота кнопки */
+  display: flex; /* Для центровки содержимого */
+  align-items: center; /* Центрируем содержимое по вертикали */
+  cursor: pointer; /* Курсор при наведении */
+}
+
+.switch::before {
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-color: #fafafa;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.switch.active {
+  background-color: #2d3047; /* Цвет фона для активного состояния */
+}
+
+.switch.active::before {
+  transform: translateX(35px); /* Перемещение кнопки при активном состоянии */
+}
+
+.custom-dropdown {
+  position: relative;
+  width: 100px; /* Adjust width as needed */
+  height: 25px;
+  cursor: pointer; /* Cursor style */
+  border: transparent; /* Border */
+  border-radius: 20px; /* Rounded corners */
+  background-color: #fefa55; /* Background color */
+}
+
+.selected {
+  padding: 3px; /* Padding */
+  text-align: center; /* Center text */
+  overflow: hidden;
+}
+
+.options {
+  position: absolute;
+  background-color: #fafafa; /* Background for options */
+  border: 1px solid #ccc; /* Border for options */
+  border-radius: 16px 16px; /* Rounded corners */
+  width: 100%; /* Full width */
+  z-index: 2; /* Layering */
+  overflow: hidden;
+}
+
+.option {
+  padding: 5px; /* Padding for options */
+  color: #2d3047; /* Text color */
+}
+
+.option:hover {
+  background-color: #f7a8fb; /* Background on hover */
+  color: #2d3047; /* Text color on hover */
+}
+
+/* ГЛАВНАЯ СТРАНИЦА */
+
+/* Стили для страницы загрузки */
+.splash-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fafafa;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.loading-dog {
+  width: 200px;
+  animation: fly 2s infinite alternate;
+}
+
+.loading-text {
+  font-size: 24px;
+  color: #2d3047;
+}
+
+/* Полоска загрузки */
+.progress-bar {
+  width: 200px;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress {
+  width: 0%; /* Начальная ширина */
+  height: 100%;
+  background: linear-gradient(90deg, #f7a8fb, #fefa55);
+  background-size: 200% 100%; /* Размер фона для эффекта чередования */
+  animation: loading 1.5s linear infinite; /* Анимация загрузки */
+}
+
+/* Анимация для полоски загрузки */
+@keyframes loading {
+  0% {
+    background-position: 0% 0; /* Начальная позиция */
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* Стили для бегающей собачки по главной странице */
+.dog {
+  width: 20px; /* Ширина шарика */
+  height: 20px; /* Высота шарика */
+  background-color: red; /* Цвет шарика */
+  border-radius: 50%; /* Закругляем углы */
+  position: absolute; /* Позиционируем шарик абсолютно */
+  z-index: 1000;
+  top: 0; /* Начальная позиция по вертикали */
+}
+
+/* Стили для главной страницы */
+.square_pictures {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  overflow-x: auto; /* Включаем горизонтальную прокрутку */
+  white-space: nowrap; /* Запрещаем перенос строк */
+}
+
+.square_pictures img {
+  width: 18%;
+  height: auto;
+}
+
+.square_pictures img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.square_pictures img:last-child {
+  margin-right: 0; /* Убираем отступ у последнего изображения */
+}
+
+/* Стили для рассылки на главной */
+#newsletter {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 10;
+}
+
+#floatingImage,
+#floatingImage2 {
+  width: 100px;
+  border-radius: 10px;
+}
+
+#closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  color: #2d3047;
+  cursor: pointer;
+  background: #fafafa;
+  border-radius: 50%;
+  border-color: #2d3047;
+  padding: 5px;
+}
+
+/* БЛОГ */
+
+/* Стили для страницы про блог */
+.body_blog {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0 auto; /* Центрируем контейнер */
+}
+
+.overlay_blog {
+  position: relative;
+  width: 90%;
+  height: 80vh;
+  display: flex;
+}
+
+.overlay_blog_container {
+  background-color: #fefa55;
+  width: 43%;
+  height: 70%;
+  margin-left: 12%;
+  padding: 10% 2% 2% 5%;
+  display: flex; /* Используем flexbox */
+  flex-direction: column;
+}
+
+.overlay_blog_container_text {
+  color: #333; /* Цвет текста */
+}
+
+.overlay_blog_image {
+  margin-left: 5%; /* Отступ между контейнером и изображением */
+  height: 70%; /* Высота изображения равна высоте контейнера */
+  width: auto; /* Автоматическая ширина для сохранения пропорций */
+}
+
+.buttons_blog {
+  display: flex; /* Используем flexbox для расположения кнопок в строку */
+  width: 90%;
+  justify-content: space-around;
+  left: 5%;
+  margin-bottom: 5%;
+}
+
+.buttons_blog {
+  display: flex; /* Используем flexbox для расположения кнопок в строку */
+  justify-content: space-between; /* Распределяем кнопки равномерно по всей ширине контейнера */
+  width: 100%; /* Задаем ширину 100% для контейнера кнопок */
+  padding: 0 10px; /* Отступы слева и справа для контейнера */
+  box-sizing: border-box; /* Учитываем отступы в ширине контейнера */
+}
+
+.button_blog {
+  flex: 1; /* Позволяет кнопкам занимать равное пространство */
+  margin: 0 5px; /* Отступ между кнопками */
+  padding: 10px; /* Отступы внутри кнопки */
+  background-color: #fefa55; /* Цвет фона кнопки */
+  border: none; /* Убираем рамку */
+  border-radius: 5px; /* Скругляем углы */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.button_blog:hover {
+  background-color: #ffd700; /* Цвет фона при наведении */
+}
+
+.blog_container {
+  height: auto;
+  width: 90%;
+  display: flex;
+  margin-bottom: 5%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+  justify-content: center;
+}
+
+.card_big_blog {
+  width: 65%; /* Увеличиваем ширину большой карточки */
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column; /* Вертикальное расположение содержимого */
+  margin-right: 2%;
+}
+
+.card_big_blog img {
+  border-radius: 8px;
+  width: 100%; /* Убедитесь, что изображение занимает всю ширину карточки */
+  height: auto; /* Сохраняем пропорции изображения */
+  flex-grow: 1; /* Позволяем изображению занимать свободное пространство карточки */
+}
+
+.small_cards {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column; /* Вертикальное расположение маленьких карточек */
+  width: 35%; /* Ширина для маленьких карточек */
+}
+
+.card_small {
+  display: flex;
+  position: relative;
+  flex-direction: column; /* Вертикальное расположение содержимого */
+  margin: 5%; /* Отступы между карточками */
+}
+
+.card_small img {
+  width: 100%; /* Изображение занимает всю ширину карточки */
+  border-radius: 8px; /* Радиус границ изображения */
+}
+
+.cards_small_text {
+  position: absolute; /* Абсолютное позиционирование */
+  bottom: 2%;
+  margin: 20px; /* Внутренние отступы для текста */
+  color: #fafafa; /* Цвет текста */
+  text-align: left;
+  overflow: hidden; /* Скрыть содержимое, выходящее за пределы текстового контейнера */
+  text-overflow: ellipsis;
+}
+
+.card_small_date {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.card_small_title {
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-top: 4%;
+}
+
+.card_small_text {
+  font-size: 16px;
+  margin-top: 4%;
+}
+
+.cards_big_text {
+  position: absolute; /* Абсолютное позиционирование */
+  bottom: 2%;
+  margin: 1%; /* Внутренние отступы для текста */
+  color: #fafafa; /* Цвет текста */
+  text-align: left;
+  overflow: hidden; /* Скрыть содержимое, выходящее за пределы текстового контейнера */
+  text-overflow: ellipsis;
+}
+
+.card_big_date {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.card_big_title {
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-top: 2%;
+}
+
+.card_big_text {
+  font-size: 16px;
+  margin-top: 2%;
+}
+
+.cards {
+  display: flex;
+  justify-content: center; /* Центрируем карточки */
+  flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+  width: 90%; /* Убедитесь, что ширина 90% */
+  margin: 0 auto; /* Центрируем контейнер */
+  margin-bottom: 5%;
+}
+
+.card {
+  position: relative;
+  width: 22%; /* Устанавливаем ширину карточки на 21% */
+  margin: 1%; /* Устанавливаем отступ в 1% между карточками */
+  display: flex;
+  justify-content: center; /* Центрируем содержимое карточки */
+  flex-direction: column;
+}
+
+.card img {
+  width: 100%; /* Изображение занимает всю ширину карточки */
+  height: auto; /* Сохраняем пропорции изображения */
+  border-radius: 8px; /* Радиус границ изображения */
+}
+
+.cards_text {
+  margin: 4%;
+  color: black; /* Цвет текста */
+  text-align: left;
+  overflow: hidden; /* Скрыть содержимое, выходящее за пределы текстового контейнера */
+  text-overflow: ellipsis;
+}
+
+/* Стили для заголовков текстов */
+.header {
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 10%;
+}
+
+.header-text {
+  position: relative; /* Меняем позиционирование текста */
+  color: black; /* Цвет текста */
+  font-size: 120px; /* Размер шрифта */
+  font-weight: bold;
+}
+
+.header-text_2 {
+  position: relative; /* Меняем позиционирование текста */
+  color: black; /* Цвет текста */
+  font-size: 45px;
+  font-weight: medium;
+}
+
+.header-text_3 {
+  position: relative; /* Меняем позиционирование текста */
+  color: black; /* Цвет текста */
+  font-size: 18px;
+  font-weight: medium;
+}
+
+/* ФОТО */
+
+/* Стили для страницы про фото */
+.photo_text_body {
+  font-size: 18px;
+  font-weight: medium;
+  text-align: left;
+}
+
+.overlay_photo {
+  position: relative;
+  width: 90%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  justify-content: center; /* Center items vertically */
+  background-color: transparent;
+}
+
+.overlay_bottom {
+  width: 100%;
+  height: 90vh; /* или используйте min-height, как вам нужно */
+  display: flex; /* Включаем flexbox */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Центрируем по вертикали */
+  text-align: center; /* Выравнивание текста по центру */
+  flex-direction: column;
+  font-size: 30px;
+  color: #2d3047;
+  font-weight: bold;
+}
+
+.content_photo {
+  margin: 5% auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card_big {
+  flex: 1; /* Большой блок занимает оставшееся пространство */
+  margin-right: 10px; /* Отступ справа от большого блока */
+  position: relative; /* Для позиционирования текста */
+}
+
+.card_big img {
+  width: 100%; /* Растягиваем изображение на всю ширину контейнера .card_big */
+  height: auto; /* Сохраняем пропорции изображения */
+}
+
+.card_big img:hover {
+  transform: scale(1.02);
+}
+
+.cards_container {
+  display: flex; /* Используем flexbox для контейнера маленьких карточек */
+  flex-wrap: wrap; /* Позволяем карточкам переноситься на новую строку */
+  width: 49%; /* Ширина контейнера с маленькими карточками */
+}
+
+.cards_container img:hover {
+  transform: scale(1.05);
+}
+
+.card_little {
+  width: 49%; /* Ширина маленькой карточки, чтобы разместить две в ряд */
+  margin-bottom: 2%; /* Отступ между карточками */
+  margin-right: 2%; /* Отступ справа для выравнивания */
+  position: relative; /* Для позиционирования текста */
+}
+
+.card_little:nth-child(2n) {
+  margin-right: 0; /* Убираем отступ справа у четных карточек */
+}
+
+.card_little img {
+  max-width: 100%; /* Ограничиваем ширину изображения */
+  height: auto; /* Сохраняем пропорции изображения */
+}
+
+.card-text-photo {
+  position: absolute;
+  bottom: 2%;
+  padding: 2%;
+  left: 2%;
+  color: #fafafa;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.body_photo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+.film-strip {
+  margin-top: 25%;
+  display: flex;
+  gap: 10px;
+}
+
+.film {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 10px;
+  gap: 10px;
+}
+
+.film img {
+  width: 250px; /* Ширина изображения */
+  height: auto; /* Автоматическая высота */
+}
+
+.film img:last-child {
+  border-bottom: none; /* Убираем разделитель для последнего изображения */
+}
+
+.film:nth-child(2) {
+  transform: translateY(12%);
+  margin-bottom: 20%;
+}
+
+.film-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем текст под изображением */
+}
+
+.film-text {
+  margin-top: 5px; /* Отступ сверху от изображения */
+  text-align: center; /* Центрируем текст */
+  color: #333; /* Цвет текста */
+  font-size: 14px; /* Размер шрифта */
+}
+
+.slideshow {
+  position: absolute; /* Позволяем слайд-шоу занимать всю область хедера */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden; /* Скрываем переполнение */
+}
+
+.slideshow img {
+  width: 100%;
+  height: auto;
+}
+
+.slideshow img.active {
+  display: block; /* Показываем активное изображение */
+}
+
+.slideshow .caption {
+  position: absolute;
+  padding: 2%;
+  left: 2%;
+  color: #fafafa;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.gallery_container_right {
+  width: 100vw; /* Полная ширина экрана */
+  height: 100vh; /* Полная высота экрана */
+  overflow-x: auto; /* Включаем горизонтальную прокрутку */
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory; /* Включаем snap для плавного скролла */
+  position: relative; /* Для позиционирования стрелки */
+}
+
+.gallery_right {
+  overflow-y: hidden;
+  overflow-x: auto;
+  display: flex; /* Горизонтальное выравнивание изображений */
+  height: 80%; /* Высота галереи */
+}
+
+.gallery_right img {
+  width: 90vw; /* Устанавливаем ширину изображений */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+  scroll-snap-align: start; /* Центрируем изображения при скролле */
+  margin: 0 5vw; /* Уменьшаем отступы между изображениями */
+  transition: transform 0.3s; /* Плавный эффект при наведении */
+}
+
+.gallery_right img:hover {
+  transform: scale(1.05); /* Увеличение изображения при наведении */
+}
+
+.gallery_right::-webkit-scrollbar {
+  display: none; /* Скрываем полосу прокрутки */
+}
+
+.arrow {
+  position: absolute; /* Абсолютное позиционирование относительно .gallery_container_right */
+  bottom: 0px; /* Отступ от нижнего края */
+  right: 10%; /* Отступ от правого края */
+  z-index: 1; /* Чтобы стрелка была поверх других элементов */
+  animation: moveRight 0.7s ease-in-out infinite alternate; /* Добавляем анимацию */
+}
+
+/* Анимация сдвига стрелки вправо */
+@keyframes moveRight {
+  0% {
+    transform: translateX(0); /* Начальное положение */
+  }
+  50% {
+    transform: translateX(10%); /* Сдвиг вправо на 10px */
+  }
+  100% {
+    transform: translateX(0); /* Возврат в исходное положение */
+  }
+}
+
+.arrow img {
+  width: 150px; /* Размер стрелки */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+
+.cards_container_2 {
+  margin: 5% 0 5%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap; /* Позволяет карточкам переноситься на новую строку */
+  justify-content: space-between; /* Распределяет карточки по всей ширине */
+}
+
+.cards_container_2 img:hover {
+  transform: scale(1.05);
+}
+
+.card_little_2 {
+  position: relative;
+  width: calc(25% - 1%); /* Ширина карточки: 25% от родителя, минус отступы */
+  margin-bottom: 1%; /* Отступ между рядами */
+}
+
+.card_little_2 img {
+  width: 100%; /* Ограничиваем ширину изображения */
+  height: auto; /* Сохраняем пропорции изображения */
+}
+
+/* ИГРЫ */
+
+/* Стили для страницы про игры */
+.body_game {
+  overflow-x: hidden;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.overlay_game {
+  background-color: #fefa55;
+  width: 100%;
+  height: 6vh;
+  display: flex; /* Включаем flexbox */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Центрируем по вертикали */
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+.big_picture_game {
+  margin-bottom: 5%;
+  width: 100%;
+  height: 91vh;
+}
+
+.big_picture_game img {
+  width: 100%;
+  height: auto;
+}
+
+.about_game {
+  display: flex;
+  height: 100vh;
+}
+
+.about_game img {
+  width: auto; /* Ширина автоматически подстраивается */
+  height: 100%; /* Устанавливаем высоту изображения на 100% */
+  max-height: 100%; /* Ограничиваем максимальную высоту изображения */
+  object-fit: cover; /* Сохраняем соотношение сторон, обрезая при необходимости */
+}
+
+.about_game_text {
+  flex: 1; /* Позволяет текстовому блоку занимать оставшееся пространство */
+  padding: 0 5%; /* Отступы слева и справа для текста */
+  display: flex; /* Используем Flexbox для расположения элементов */
+  flex-direction: column;
+  margin-top: 20%;
+  gap: 5%;
+  color: #2d3047;
+}
+
+.latest_updates {
+  margin: 5% 5% 0.5% 5%;
+  color: #2d3047;
+  display: grid; /* Используем Grid для расположения элементов */
+  grid-template-columns: 1fr auto;
+  flex-direction: column; /* Вертикальное направление */
+  gap: 5%; /* Расстояние между новостями */
+}
+
+.latest_updates .header-text_2 {
+  text-align: left;
+  margin: 0;
+}
+
+.update {
+  grid-column: 1 / -1; /* Обеспечиваем, чтобы обновления занимали всю ширину */
+  display: none; /* Используем Flexbox внутри обновления для выравнивания иконки и текста */
+  align-items: center; /* Выравниваем по центру по вертикали */
+  gap: 2%; /* Расстояние между иконкой и текстом */
+}
+
+.update-icon {
+  width: 24px; /* Ширина иконки */
+  height: 24px; /* Высота иконки */
+  margin-right: 10px; /* Отступ между иконкой и текстом */
+}
+
+.update-text {
+  display: flex; /* Используем Flexbox для вертикального расположения текста */
+  flex-direction: column; /* Вертикальное направление для текста */
+}
+
+.update-text p {
+  margin: 0.5%; /* Убираем отступы у параграфов */
+  white-space: nowrap;
+  font-size: 15px;
+}
+
+.latest_update_buttom {
+  padding: 7px 15px;
+  align-self: flex-end;
+  display: block;
+  width: 100px;
+  font-size: 15px;
+  text-decoration: none;
+  color: #333; /* Цвет текста по умолчанию */
+  overflow: hidden;
+  border: 1px solid #ccc;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  background: transparent; /* Фон по умолчанию */
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 16px;
+  outline: none;
+}
+
+.latest_update_buttom span {
+  position: relative;
+  z-index: 2; /* Убедитесь, что текст над фоном */
+}
+
+.latest_update_buttom:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%; /* Задайте высоту для эффекта */
+  background: #f7a8fb; /* Розовый цвет фона при наведении */
+  transition: all 0.3s;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.latest_update_buttom:hover {
+  color: #fafafa; /* Цвет текста при наведении */
+}
+
+.latest_update_buttom:hover:after {
+  width: 100%; /* Заполнение фона при наведении */
+}
+
+.overlay_game .menu-icon {
+  position: absolute; /* Позиционируем меню относительно родителя */
+  right: 2.5%; /* Выравнивание по правому краю */
+  top: 1.5%; /* Отступ сверху */
+  background-color: transparent; /* Прозрачный фон */
+  border: none; /* Убираем рамку */
+  cursor: pointer; /* Указатель при наведении */
+  z-index: 1; /* Устанавливаем кнопку над слайдами */
+}
+
+.games {
+  margin: 0.5% 0 5% 5%;
+  width: 90%;
+  height: 100vh; /* Устанавливаем высоту контейнера */
+  display: flex;
+  flex-wrap: wrap; /* Позволяет карточкам переноситься на следующий ряд */
+  justify-content: flex-start; /* Выравнивание по левому краю */
+  align-items: flex-start; /* Выравнивание по верхнему краю */
+}
+
+.game {
+  position: relative; /* Позволяет использовать абсолютное позиционирование для псевдоэлемента */
+  width: 32%; /* Ширина карточки */
+  margin: 0.5%; /* Отступы между карточками */
+  border-radius: 8px; /* Радиус границ карточки */
+  overflow: hidden; /* Скрываем избыточный контент */
+}
+
+.game a {
+  display: block; /* Делаем ссылку блочной, чтобы она занимала всю карточку */
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit; /* Унаследуем цвет текста */
+}
+
+.game img {
+  width: 100%;
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+  border-radius: 8px; /* Радиус границ изображения */
+  object-fit: cover; /* Обеспечивает правильное отображение изображения */
+}
+
+.game::before {
+  content: ''; /* Создаем пустой псевдоэлемент */
+  position: absolute; /* Абсолютное позиционирование */
+  top: 0; /* Заполняем весь контейнер */
+  left: 0; /* Заполняем весь контейнер */
+  right: 0; /* Заполняем весь контейнер */
+  bottom: 0; /* Заполняем весь контейнер */
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  z-index: 0; /* Устанавливаем порядок отображения ниже текста */
+}
+
+.game-title {
+  position: absolute; /* Абсолютное позиционирование для текста */
+  z-index: 1; /* Текст выше фона */
+  top: 45%; /* Центрируем по вертикали */
+  left: 50%; /* Центрируем по горизонтали */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Сдвигаем элемент на 50% его ширины и высоты для точного центрирования */
+  color: #fafafa; /* Цвет текста заголовка */
+  font-weight: 800; /* Жирный текст */
+  font-size: 15px; /* Размер текста */
+  text-align: center; /* Выравнивание текста по центру */
+  text-transform: uppercase; /* Преобразование текста в верхний регистр */
+  padding: 50%;
+}
+
+.manytexts {
+  display: flex; /* Включаем Flexbox */
+  flex-direction: column; /* Вертикальное выравнивание */
+  align-items: center; /* Центрируем по горизонтали */
+  gap: 20px; /* Увеличивает расстояние между элементами */
+  margin: 10%;
+  width: 80%;
+  text-align: center; /* Центрирование текста */
+  height: auto; /* Автоматическая высота */
+  margin-bottom: 0;
+}
+
+.manytexts img {
+  align-items: center;
+  width: 10%;
+  height: 150%;
+}
+
+.dogs_falling {
+  width: 10%; /* Ширина изображения */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+  animation: fall 7s forwards; /* Анимация падения */
+}
+
+.sticky-container {
+  margin-top: -350px;
+  position: relative; /* Относительное позиционирование */
+  width: 40%; /* Ширина 100% */
+  display: flex; /* Используем flexbox для центрирования */
+  justify-content: center; /* Центрируем по горизонтали */
+  margin-bottom: -10px; /* Отрицательный отступ для прикрепления к футеру */
+  z-index: 4; /* Убедитесь, что контейнер выше футера */
+  margin-left: 30%;
+}
+
+#button_dog {
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%; /* Ширина картинки */
+  height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+
+#fall_dogs {
+  position: relative; /* Позволяет позиционировать дочерние элементы */
+  overflow: hidden; /* Скрывает элементы, выходящие за пределы контейнера */
+  width: 100%; /* Ширина контейнера 100% */
+  height: 100vh; /* Высота контейнера, чтобы изображения падали внутри видимой области */
+  z-index: 3;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh); /* Перемещение вниз на 100% высоты вьюпорта */
+  }
+}
+
+/* РАССЫЛКА СООБЩЕНИЙ */
+
+/* Стили для рассылки с Пином */
+.body_newsletters {
+  background-color: #fafafa; /* Цвет фона */
+  padding: 2%; /* Добавляем отступы, если нужно */
+  min-height: 100vh; /* Минимальная высота для заполнения экрана */
+}
+
+.frame_newsletter {
+  border: 15px solid transparent; /* Установите цвет рамки на transparent */
+  border-image: repeating-linear-gradient(
+      -35deg,
+      #f7a8fb,
+      #f7a8fb 35px,
+      /* Розовый цвет */ #fafafa 35px,
+      #fafafa 70px,
+      /* Белый цвет после розового */ #fefa55 70px,
+      #fefa55 105px,
+      /* Желтый цвет */ #fafafa 105px,
+      #fafafa 140px
+    )
+    1; /* Убедитесь, что значение slice соответствует вашему градиенту */
+  border-image-slice: 1; /* Убедитесь, что значение slice соответствует вашему градиенту */
+  padding: 1em; /* Расстояние от текста до рамки */
+  margin-bottom: 3%;
+}
+
+.logo {
+  width: 110px;
+  height: 20px;
+}
+
+.stamp {
+  visibility: hidden;
+  width: 110px;
+  margin-bottom: 20px; /* Отступ между маркой и картинкой */
+}
+
+.newsletters_main {
+  display: flex; /* Создаем горизонтальный контейнер */
+  justify-content: space-between; /* Располагаем контейнеры с отступом */
+  max-width: 1200px; /* Ограничиваем максимальную ширину */
+  width: 100%; /* Адаптивность */
+  margin: 0;
+}
+
+#introText,
+#greetingText {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.left_container {
+  display: flex;
+  flex-direction: column; /* Элементы располагаются вертикально */
+  min-height: 100vh; /* Занимает всю высоту экрана */
+  justify-content: space-between; /* Разделяем содержимое по вертикали */
+  padding: 20px; /* Отступы */
+  width: 700px; /* Фиксированная ширина */
+}
+
+.right_container {
+  display: flex;
+  flex-direction: column; /* Элементы располагаются вертикально */
+  align-items: flex-end;
+  width: 500px; /* Занимает половину пространства */
+  margin-left: auto;
+  padding: 20px; /* Отступы */
+}
+
+.newsletters_image {
+  width: 450px; /* Устанавливаем ширину изображения */
+}
+
+.newsletters_image_little {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  cursor: grab; /* Курсор для перетаскивания */
+  transition: transform 0.3s ease; /* Плавная анимация */
+}
+
+.newsletters_image_play {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.newsletters_big_p {
+  font-size: 34px;
+  color: #2d3047;
+  margin: 10px 0;
+}
+
+.newsletters_little_p {
+  font-size: 24px;
+  color: #2d3047;
+  margin: 40px 0;
+}
+
+.play_button {
+  font-size: 25px;
+  padding: 15px 40px; /* Более широкая кнопка */
+  background-color: #2d3047;
+  color: white;
+  border: none;
+  margin-top: auto;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.no_play_button {
+  background: none; /* Убираем фон */
+  border: none; /* Убираем границы */
+  color: #2d3047; /* Цвет текста */
+  text-decoration: underline; /* Подчеркивание */
+  cursor: pointer; /* Курсор при наведении */
+  margin-top: 10px; /* Отступ между кнопками */
+}
+
+.form_container {
+  display: flex; /* Делаем форму флекс-контейнером */
+  flex-direction: column; /* Элементы располагаются вертикально */
+  width: 650px;
+  padding: 20px;
+  background-color: transparent;
+  transition: opacity 0.3s ease; /* Плавное появление */
+}
+
+.form_container.hidden {
+  display: none;
+}
+
+.form_container label {
+  display: flex; /* Создаем flex-контейнер */
+  align-items: center; /* Выравниваем чекбокс и текст по центру */
+  font-size: 23px; /* Размер шрифта */
+  color: #2d3047; /* Цвет текста */
+  cursor: pointer; /* Изменяем курсор при наведении */
+}
+
+.form_label {
+  font-size: 18px; /* Размер шрифта */
+  color: #555; /* Цвет текста */
+  margin-bottom: 5px; /* Отступ между меткой и полем */
+}
+
+/* Общие стили для полей ввода */
+.form_container input[type='text'],
+.form_container input[type='email'],
+.form_container input[type='date'] {
+  padding: 10px; /* Отступы внутри поля */
+  margin-bottom: 20px; /* Пробел между полями */
+  border: none; /* Убираем все границы */
+  border-bottom: 1px solid #ccc; /* Добавляем только нижнюю границу */
+  font-size: 16px; /* Размер шрифта */
+  background-color: transparent; /* Прозрачный фон */
+  width: 100%;
+}
+
+.form_container input[type='text']:focus,
+.form_container input[type='email']:focus,
+.form_container input[type='date']:focus {
+  border-color: #2d3047;
+  outline: none;
+  color: #2d3047;
+}
+
+.form_container input::placeholder {
+  color: #ccc;
+}
+
+/* Стиль для чекбоксов */
+.form_container input[type='checkbox'] {
+  appearance: none; /* Убираем стандартный вид чекбокса */
+  width: 30px; /* Размер чекбокса */
+  height: 30px; /* Размер чекбокса */
+  border: 1px solid #ccc; /* Граница */
+  border-radius: 4px; /* Скругленные углы */
+  cursor: pointer; /* Изменяем курсор при наведении */
+  position: relative; /* Для абсолютного позиционирования галочки */
+  margin-right: 10px; /* Отступ справа от чекбокса */
+  margin-top: 5px;
+}
+
+/* Стиль при выборе чекбокса */
+.form_container input[type='checkbox']:checked {
+  position: relative; /* Для добавления галочки */
+}
+
+/* Добавляем свою иконку галочки */
+.form_container input[type='checkbox']:checked::after {
+  /* content: ''; */
+  content: '\2713';
+  font-size: 20px;
+  width: 50px; /* Размер иконки */
+  height: 50px; /* Размер иконки */
+  /* background-image: url('images/checkmark.png'); */
+  color: #f7a8fb;
+  display: flex;
+  position: absolute;
+  transform: translate(-50%, -50%); /* Точное центрирование */
+  top: 50%; /* Центрируем вертикально */
+  left: 50%; /* Центрируем горизонтально */
+  background-size: contain; /* Масштабируем иконку по размеру чекбокса */
+  background-repeat: no-repeat; /* Запрещаем повторение изображения */
+  background-position: center; /* Центрируем иконку */
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Занимает всю ширину чекбокса */
+  height: 100%; /* Занимает всю высоту чекбокса */
+}
+
+.form_container .submit_button {
+  font-size: 25px;
+  padding: 15px 40px;
+  background-color: #2d3047;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* КНИГА */
+
+.body_book {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.book {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 600px;
+}
+
+.page {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.start_factday {
+  width: 100%;
+  height: 200px;
+  padding: 2% 2% 0 2%;
+}
+
+.name_factday {
+  font-weight: bold;
+  font-size: 24px;
+  margin-left: 5%;
+}
+
+.header_factday {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  margin: 2% 5% 0 5%;
+  color: #2d3047;
+}
+
+.button_factday {
+  width: 130px;
+  height: 40px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  border: 2px solid #fafafa;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin: 2% 5% 0 0;
+  border-color: #2d3047;
+}
+
+.button_factday:hover {
+  background-color: #d68fd4;
+}
+
+.body_factday {
+  color: #2d3047;
+  position: relative;
+  margin: 0;
+  font-family: 'Suisse';
+  box-sizing: border-box;
+}
+
+.image_factday {
+  width: 80%;
+  display: block;
+  margin: 60px auto 50px;
+}
+
+.advice {
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 2%;
+  margin-bottom: 2%;
+}
+
+.number {
+  color: #2d3047;
+  font-size: 40px;
+}
+
+.phrase {
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-bottom: 5%;
+  margin-bottom: 5%;
+}
+
+/* ПОДВАЛ */
+
+/* Стили для подвала */
+footer {
+  width: 100%; /* Устанавливаем ширину на 100% */
+  margin: 0; /* Убираем отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  left: 0;
+  text-decoration: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.footer_main {
+  background-color: #2d3047;
+  padding: 20px;
+  border-bottom-left-radius: 15px; /* Скругление нижних углов */
+  border-bottom-right-radius: 15px;
+  position: relative;
+  color: #fafafa;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_logo {
+  width: 20px;
+  height: auto; /* Установка автоматической высоты для пропорциональности */
+}
+
+.footer_item {
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 2%;
+}
+
+.footer_left,
+.footer_right {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_right {
+  text-align: right; /* Выровнять текст вправо */
+}
+
+.footer_icon,
+.footer_telegram {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+.footer_telegram {
+  padding-top: 7%;
+  padding-right: 5%;
+}
+
+.footer_bottom {
+  background-color: #262837;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: center;
+  color: #fafafa;
+  margin-top: -13px;
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Pin – твой персональный таймкиллер</title>
+  </head>
+
+  <body class="body_main">
+    <!------------МЕНЮ------------>
+    <header class="header">
+      <button class="menu-icon" type="button" aria-label="Открыть меню">
+        <img src="https://example.com/icon.png" alt="Menu Icon" />
+        <svg
+          xmlns="https://img.freepik.com/free-vector/paw-print-with-leaf_78370-6717.jpg?t=st=1733059765~exp=1733063365~hmac=3fd022fb9f989b7ac48028928bcb06460d69e3b4991b0a0b8d4238e2b8b4e164&w=1060"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+        </svg>
+      </button>
+      <nav id="dropdown-menu" class="hidden">
+        <div class="switch-container">
+          <div class="custom-dropdown" id="language-dropdown">
+            <div class="selected">
+              <img
+                src="https://example.com/icon-language.png"
+                alt="Язык"
+                class="language-icon"
+              />
+              <span id="selected-language-text">Язык</span>
+            </div>
+            <div class="options hidden" id="language-options">
+              <div class="option" data-value="en">woof</div>
+              <div class="option" data-value="ru">гав</div>
+            </div>
+          </div>
+          <div class="switch" id="themeSwitch"></div>
+        </div>
+        <div class="divider"></div>
+        <ul>
+          <li>
+            <a href="index.html"
+              ><img src="https://example.com/home-icon.png" alt="Home Icon" />
+              Главная</a
+            >
+          </li>
+          <li>
+            <a href="blog.html"
+              ><img src="https://example.com/blog-icon.png" alt="Blog Icon" />
+              Блог</a
+            >
+          </li>
+          <li>
+            <a href="game.html"
+              ><img src="https://example.com/game-icon.png" alt="Game Icon" />
+              Игры</a
+            >
+          </li>
+          <li>
+            <a href="photo.html"
+              ><img
+                src="https://example.com/photo-icon.png"
+                alt="Gallery Icon"
+              />
+              Галерея</a
+            >
+          </li>
+          <li>
+            <a href="book.html"
+              ><img src="https://example.com/book-icon.png" alt="Book Icon" />
+              Книга</a
+            >
+          </li>
+          <li>
+            <a href="souvenir.html"
+              ><img
+                src="https://example.com/souvenir-icon.png"
+                alt="Souvenir Icon"
+              />
+              Сувенирка</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!----------СТРАНИЦА ЗАГРУЗКИ------------>
+
+    <!-- <div class="splash-screen">
+      <div class="loading-container">
+        <img
+          src="https://new.mailfit.com/wp-content/themes/mailfit_2024-master/assets/img/newsletter/formPegion.webp"
+          alt="Голубь"
+          class="loading-dog"
+        />
+        <p class="loading-text">Загрузка...</p>
+      </div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <div class="main-content" style="display: none">
+      <section class="home-section">
+        <h1>Pin.ceFFo — мир удивительных вещей!</h1>
+        <p>Здесь вы найдете статьи, фото, сувениры, книгу и даже игры.</p>
+      </section>
+    </div> -->
+
+    <!---------Собака бегает----------->
+    <!-- <div class="dog" id="dog"></div> -->
+
+    <!-------Гифка-подпись------->
+    <!-- <div class="notification_photo">
+      <img
+        src="https://code.s3.yandex.net/web-code/images/freetrack/04/card-1.jpg"
+        alt="Гифка на панели"
+      />
+    </div> -->
+
+    <!------Основная страница----->
+
+    <!------Вступление------->
+    <div class="””"></div>
+
+    <!-- Квадратные карточки с выступами -->
+    <div class="square_pictures">
+      <img
+        src="https://code.s3.yandex.net/web-code/procrastinate/2.png"
+        alt="Фото 1"
+      />
+      <img
+        src="https://code.s3.yandex.net/web-code/procrastinate/3.png"
+        alt="Фото 2"
+      />
+      <img
+        src="https://code.s3.yandex.net/web-code/procrastinate/4.png"
+        alt="Фото 3"
+      />
+      <img
+        src="https://code.s3.yandex.net/web-code/procrastinate/5.png"
+        alt="Фото 4"
+      />
+      <img
+        src="https://code.s3.yandex.net/web-code/procrastinate/5.png"
+        alt="Фото 4"
+      />
+    </div>
+
+    <!-- Собака-рассылка -->
+    <div id="newsletter" class="hidden">
+      <a href="https://example.com" id="linkToPage1">
+        <img src="your-image-url.jpg" alt="Изображение" id="floatingImage" />
+      </a>
+      <span id="closeButton">&times;</span>
+      <a href="https://example.com" id="linkToPage2" class="hidden">
+        <img
+          src="your-second-image-url.jpg"
+          alt="Вторая картинка"
+          id="floatingImage2"
+        />
+      </a>
+    </div>
+
+    <footer>
+      <div class="footer_main">
+        <div class="footer_content">
+          <div class="footer_left">
+            <p>© 2024 - 2025 <a href="https://pinceffo.com/">Pinceffo</a></p>
+            <button id="scrollToTop" class="scroll-button">Наверх</button>
+          </div>
+          <div class="footer_right">
+            <div class="footer_item">
+              <p>Pin.ceFFo</p>
+            </div>
+            <div>
+              <p>
+                со всего мира с любовью
+                <img
+                  src="images/icon2.png"
+                  alt="Иконка 2"
+                  class="footer_icon"
+                />
+              </p>
+              <p>
+                тел. +7 906 1532211
+                <img
+                  src="images/icon2.png"
+                  alt="Иконка 2"
+                  class="footer_icon"
+                />
+              </p>
+              <p>
+                piceffomug@gmail.com
+                <img
+                  src="images/icon2.png"
+                  alt="Иконка 2"
+                  class="footer_icon"
+                />
+              </p>
+              <div class="footer_social">
+                <a href="https://example.com" target="_blank">
+                  <img
+                    src="images/icon1.png"
+                    alt="Иконка 1"
+                    class="footer_telegram"
+                  />
+                </a>
+                <a href="https://example.com" target="_blank">
+                  <img
+                    src="images/icon1.png"
+                    alt="Иконка 1"
+                    class="footer_telegram"
+                  />
+                </a>
+                <a href="https://example.com" target="_blank">
+                  <img
+                    src="images/icon1.png"
+                    alt="Иконка 1"
+                    class="footer_telegram"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_bottom">
+        <a href="https://example.com">
+          <img src="images/icon1.png" alt="Иконка 1" class="footer_logo" />
+        </a>
+        <a href="https://pinceffo.com">Политика конфиденциальности</a>
+        <a href="https://pinceffo.com">Пользовательское соглашение</a>
+        <p>Пин в действии: код и дизайн. Все права защищены Pin.ceFFo</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

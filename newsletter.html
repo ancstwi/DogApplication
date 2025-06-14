@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Newsletter from Pinceffo</title>
+  </head>
+
+  <body class="body_newsletters">
+    <!-- Верхняя секция с логотипом -->
+    <section class="frame_newsletter">
+      <header class="newsletters_top">
+        <a href="index.html">
+          <img
+            src="https://assets.turbologo.ru/blog/ru/2019/03/18165615/%D0%91%D0%B5%D0%B7-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-1-276.png"
+            class="logo"
+            alt="Логотип"
+          />
+        </a>
+      </header>
+
+      <!-- Основная секция -->
+      <section class="newsletters_main">
+        <div class="left_container">
+          <!-- Приветственная секция -->
+          <div class="newsletters_intro">
+            <p class="newsletters_big_p" id="introText">Привет!</p>
+            <p class="newsletters_big_p" id="greetingText">
+              Меня зовут Пина, и я хочу приносить вам рассылку
+            </p>
+            <p class="newsletters_little_p" id="playText">
+              Поиграй со мной, чтобы получить первое письмо
+            </p>
+          </div>
+
+          <!-- Форма подписки -->
+          <form
+            id="newsletterForm"
+            class="form_container"
+            style="display: none"
+          >
+            <label for="from" class="form_label">От кого:</label>
+            <input
+              type="text"
+              id="from"
+              name="from"
+              value="PinceFFo"
+              readonly
+            />
+            <label for="name" class="form_label">Кому:</label>
+            <input type="text" id="name" name="name" placeholder="Имя" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Email"
+            />
+            <label for="date" class="form_label"></label>
+            <input
+              type="date"
+              id="birthday"
+              name="birthday"
+              placeholder="Дата рождения"
+            />
+
+            <label
+              ><input type="checkbox" name="newsletterType" value="funny" />
+              Получать только веселые письма</label
+            ><br />
+            <label
+              ><input type="checkbox" name="newsletterType" value="useful" />
+              Получать только полезные письма</label
+            ><br />
+            <label
+              ><input
+                type="checkbox"
+                name="newsletterType"
+                value="all_letters"
+              />
+              Получать все письма</label
+            ><br />
+            <button type="submit" class="submit_button">Подписаться</button>
+          </form>
+
+          <!-- Кнопки для щенка -->
+          <button id="playButton" class="play_button">Поиграть!</button>
+          <button id="noPlayButton" class="no_play_button">
+            Не хочу играть...
+          </button>
+        </div>
+
+        <div class="right_container">
+          <!-- Марка -->
+          <img
+            src="https://markimira.ru/upload/iblock/5c2/5c2bed4d46e683dacf5e2fe3d2e24f3a.jpg"
+            class="stamp"
+            alt="Марка"
+          />
+
+          <!-- Изображение щенка -->
+          <img
+            class="newsletters_image"
+            src="https://new.mailfit.com/wp-content/themes/mailfit_2024-master/assets/img/newsletter/formPegion.webp"
+            alt="Изображение"
+          />
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      <div class="footer_main">
+        <div class="footer_content">
+          <div class="footer_left">
+            <p>© 2024 - 2025 <a href="https://pinceffo.com/">Pinceffo</a></p>
+            <button id="scrollToTop" class="scroll-button">Наверх</button>
+          </div>
+          <div class="footer_right">
+            <div class="footer_item">
+              <p>Pin.ceFFo</p>
+            </div>
+            <div>
+              <p>
+                со всего мира с любовью
+                <img
+                  src="images/icon2.png"
+                  alt="Иконка 2"
+                  class="footer_icon"
+                />
+              </p>
+              <p>
+                тел. +7 906 1532211
+                <img
+                  src="images/icon2.png"
+                  alt="Иконка 2"
+                  class="footer_icon"
+                />
+              </p>
+              <p>
+                piceffomug@gmail.com
+                <img
+                  src="images/icon2.png"
+                  alt="Иконка 2"
+                  class="footer_icon"
+                />
+              </p>
+              <div class="footer_social">
+                <a href="https://example.com" target="_blank">
+                  <img
+                    src="images/icon1.png"
+                    alt="Иконка 1"
+                    class="footer_telegram"
+                  />
+                </a>
+                <a href="https://example.com" target="_blank">
+                  <img
+                    src="images/icon1.png"
+                    alt="Иконка 1"
+                    class="footer_telegram"
+                  />
+                </a>
+                <a href="https://example.com" target="_blank">
+                  <img
+                    src="images/icon1.png"
+                    alt="Иконка 1"
+                    class="footer_telegram"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_bottom">
+        <a href="https://example.com">
+          <img src="images/icon1.png" alt="Иконка 1" class="footer_logo" />
+        </a>
+        <a href="https://pinceffo.com">Политика конфиденциальности</a>
+        <a href="https://pinceffo.com">Пользовательское соглашение</a>
+        <p>Пин в действии: код и дизайн. Все права защищены Pin.ceFFo</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
