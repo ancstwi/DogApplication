@@ -72,9 +72,9 @@ body {
   transform: translateY(1.5px); /* Опускаем кнопку вниз при нажатии */
 }
 
-/* .hidden {
+.hidden {
   display: none;
-} */
+}
 
 .divider {
   width: 80%; /* Полоска на всю ширину */
