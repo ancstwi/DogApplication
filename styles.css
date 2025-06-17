@@ -22,10 +22,6 @@ p {
   font-size: 100%;
 }
 
-.header {
-  height: 5%;
-}
-
 h1 {
   padding-top: 45px;
   padding-bottom: 45px;
@@ -57,10 +53,15 @@ body {
 }
 
 /* Стили для меню */
+.header_main {
+  height: 250px;
+  background-color: rgba(222, 199, 199, 0.867);
+}
+
 .menu-icon {
   position: absolute; /* Позиционируем меню относительно родителя */
-  right: 5%; /* Выравнивание по правому краю */
-  top: 5%; /* Отступ сверху */
+  right: 5px; /* Выравнивание по правому краю */
+  top: 5px; /* Отступ сверху */
   background-color: transparent; /* Прозрачный фон */
   border: none; /* Убираем рамку */
   cursor: pointer; /* Указатель при наведении */
@@ -71,9 +72,9 @@ body {
   transform: translateY(1.5px); /* Опускаем кнопку вниз при нажатии */
 }
 
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 
 .divider {
   width: 80%; /* Полоска на всю ширину */
